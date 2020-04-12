@@ -9,6 +9,8 @@
 # to the following list.
 
 # Wildcards (*) can be used.
+# Adding an wildcard will automatically add any block
+# that has that string on its name.
 
 spawnproof-blocks:
 - polished_*
@@ -18,5 +20,5 @@ spawnproof-blocks:
 - diamond_block
 - coal_block
 - emerald_block
-- concrete_powder
-- concrete
+- _concrete_powder*
+- _concrete*
