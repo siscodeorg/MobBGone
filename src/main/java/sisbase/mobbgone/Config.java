@@ -2,13 +2,14 @@ package sisbase.mobbgone;
 import org.bukkit.Material;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Config {
     private List<Material> Blocks = new ArrayList<>();
     public void initialize()
     {
-        List<String> BlockRegistry = Utils.getNames(Material.class);
+        Set<String> BlockRegistry = Utils.getNames(Material.class);
         List<String> fromConfig = MobBGone.getPlugin(MobBGone.class)
                 .getConfig().getStringList("spawnproof-blocks");
         for (String entry:fromConfig) {
@@ -24,7 +25,7 @@ public class Config {
 
         return Blocks;
     }
-    private List<String> checkName(String entry, List<String> registry)
+    private List<String> checkName(String entry, Set<String> registry)
     {
         final String newEntry = entry.replace("*","").replace("\\*","");
         if(entry.contains("*")) return registry.stream().filter((d) -> d.contains(newEntry.toUpperCase())).collect(Collectors.toList());
