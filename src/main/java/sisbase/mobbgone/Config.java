@@ -1,6 +1,6 @@
 package sisbase.mobbgone;
+
 import org.bukkit.Material;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,10 +13,14 @@ public class Config {
         Set<String> BlockRegistry = Utils.getNames(Material.class);
         List<String> fromConfig = MobBGone.getPlugin(MobBGone.class)
                 .getConfig().getStringList("spawnproof-blocks");
+        boolean legacyMode = MobBGone.getPlugin(MobBGone.class)
+                .getConfig().getBoolean("register-legacy");
+
         for (String entry:fromConfig) {
             Set<String> strings = checkName(entry, BlockRegistry);
             for(String response : strings)
             {
+                if(!legacyMode && response.contains("LEGACY")) continue;
                 System.out.println("REGISTERED : " + response);
                 Blocks.add(Material.getMaterial(response));
             }
