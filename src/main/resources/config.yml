@@ -22,3 +22,15 @@ spawnproof-blocks:
 - emerald_block
 - _concrete_powder*
 - _concrete*
+
+#               ###########################
+#               ## Register Legacy Types ##
+#               ###########################
+
+# Legacy types SHOULDN'T be registered
+# ##########################################
+# ### UNLESS YOU KNOW WHAT YOU ARE DOING ###
+# ##########################################
+# DON'T change this flag unless you are CERTAIN.
+
+register-legacy: false
