@@ -1,0 +1,6 @@
+name: MobBGone
+version: ${project.version}
+main: sisbase.mobbgone.MobBGone
+api-version: 1.13
+authors: [sisbase]
+description: Disables mobspawning on synthetic blocks

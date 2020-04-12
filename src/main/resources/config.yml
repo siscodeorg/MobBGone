@@ -1,0 +1,22 @@
+#               ########################
+#               ## Spawn Proof Blocks ##
+#               ########################
+
+# The list below contains the default values
+# for the spawn proof blocks (i.e. synthetic blocks)
+
+# If altering is required add or remove the block name 
+# to the following list.
+
+# Wildcards (*) can be used.
+
+spawnproof-blocks:
+- polished_*
+- smooth_stone
+- iron_block
+- redstone_*
+- diamond_block
+- coal_block
+- emerald_block
+- concrete_powder
+- concrete
