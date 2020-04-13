@@ -1,24 +1,24 @@
 package sisbase.mobbgone
 
-import org.bukkit.Bukkit
 import org.bukkit.Material
 
 class Config {
     private val _blocks: MutableSet<Material?> = HashSet()
-    val blocks: Set<Material?>
+    var legacyMode: Boolean = false
+    val spawnproofBlocks: Set<Material?>
         get() = _blocks
 
     fun initialize() {
-        val BlockRegistry = getEnumNames<Material>()
-        val fromConfig: List<String> = Bukkit.getPluginManager().getPlugin("MobBGone")!!
-                .config.getStringList("spawnproof-blocks")
-        val legacyMode: Boolean = Bukkit.getPluginManager().getPlugin("MobBGone")!!
-                .config.getBoolean("register-legacy")
-        for (entry in fromConfig) {
-            var strings = checkName(entry, BlockRegistry)
-            if (!legacyMode) {
-                strings = strings.filter { !it.contains("LEGACY") }
-            }
+        val fromConfig: List<String> = MobBGone.bukkitConfig.getStringList("spawnproof-blocks")
+        legacyMode = MobBGone.bukkitConfig.getBoolean("register-legacy")
+
+        makeBlocklist(fromConfig)
+    }
+
+    fun makeBlocklist(wildcards: List<String>) {
+        val blockRegistry = getEnumNames<Material>().filter { legacyMode || !it.contains("LEGACY") }
+        for (entry in wildcards) {
+            val strings = matchWildcard(entry, blockRegistry)
             for (response in strings) {
                 println("REGISTERED : $response")
                 _blocks.add(Material.getMaterial(response))
@@ -26,8 +26,8 @@ class Config {
         }
     }
 
-    private fun checkName(entry: String, registry: Set<String>): Set<String> {
-        val pattern = Regex.escape(entry.toUpperCase()).replace("*", "\\E.*\\Q").toRegex()
+    private fun matchWildcard(entry: String, registry: Set<String>): Set<String> {
+        val pattern = globToRegex(entry.toUpperCase())
         return registry.filter { pattern.matches(it) }
     }
 }

@@ -1,5 +1,6 @@
 package sisbase.mobbgone
 
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import sisbase.mobbgone.handlers.SpawnHandler
 
@@ -15,5 +16,6 @@ class MobBGone : JavaPlugin() {
 
     companion object {
         val cfg = Config()
+        val bukkitConfig get() = Bukkit.getPluginManager().getPlugin("MobBGone")!!.config
     }
 }
