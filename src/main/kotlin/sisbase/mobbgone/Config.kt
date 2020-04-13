@@ -2,9 +2,6 @@ package sisbase.mobbgone
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
-import java.util.*
-import java.util.regex.Pattern
-import java.util.stream.Collectors
 
 class Config {
     private val _blocks: MutableSet<Material?> = HashSet()

@@ -5,7 +5,6 @@ import sisbase.mobbgone.handlers.SpawnHandler
 
 class MobBGone : JavaPlugin() {
     override fun onEnable() {
-        println("Enabled!")
         saveDefaultConfig()
         reloadConfig()
         cfg.initialize()
