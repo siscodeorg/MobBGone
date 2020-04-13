@@ -5,6 +5,7 @@ import org.bukkit.Material
 class Config {
     private val _blocks: MutableSet<Material?> = mutableSetOf()
     var legacyMode: Boolean = false
+        private set
     val spawnproofBlocks: Set<Material?>
         get() = _blocks
 
@@ -15,7 +16,7 @@ class Config {
         legacyMode = MobBGone.bukkitConfig.getBoolean("register-legacy")
     }
 
-    fun makeBlocklist(wildcards: List<String>) {
+    private fun makeBlocklist(wildcards: List<String>) {
         val blockRegistry = getEnumNames<Material>().filter { legacyMode || !it.contains("LEGACY") }
         for (pattern in wildcards) {
             val blocks = matchWildcard(pattern, blockRegistry)
