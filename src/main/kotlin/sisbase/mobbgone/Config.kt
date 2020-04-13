@@ -3,28 +3,28 @@ package sisbase.mobbgone
 import org.bukkit.Material
 
 class Config {
-    private val _blocks: MutableSet<Material?> = HashSet()
+    private val _blocks: MutableSet<Material?> = mutableSetOf()
     var legacyMode: Boolean = false
     val spawnproofBlocks: Set<Material?>
         get() = _blocks
 
     fun initialize() {
-        val fromConfig: List<String> = MobBGone.bukkitConfig.getStringList("spawnproof-blocks")
-        legacyMode = MobBGone.bukkitConfig.getBoolean("register-legacy")
+        val blockRules: List<String> = MobBGone.bukkitConfig.getStringList("spawnproof-blocks")
+        makeBlocklist(blockRules)
 
-        makeBlocklist(fromConfig)
+        legacyMode = MobBGone.bukkitConfig.getBoolean("register-legacy")
     }
 
     fun makeBlocklist(wildcards: List<String>) {
         val blockRegistry = getEnumNames<Material>().filter { legacyMode || !it.contains("LEGACY") }
-        for (entry in wildcards) {
-            val strings = matchWildcard(entry, blockRegistry)
-            strings.ifEmpty {
-                MobBGone.logger.warning("$entry matches no known blocks")
+        for (pattern in wildcards) {
+            val blocks = matchWildcard(pattern, blockRegistry)
+            blocks.ifEmpty {
+                MobBGone.logger.warning("$pattern matches no known blocks")
             }
-            for (response in strings) {
-                MobBGone.logger.info("Registered spawnproof block: $response")
-                _blocks.add(Material.getMaterial(response))
+            for (block in blocks) {
+                MobBGone.logger.info("Registered spawnproof block: $block")
+                _blocks.add(Material.getMaterial(block))
             }
         }
     }
