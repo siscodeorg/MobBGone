@@ -9,7 +9,7 @@ class Config {
         get() = _blocks
 
     fun initialize() {
-        val BlockRegistry = getNames(Material::class.java)
+        val BlockRegistry = getEnumNames<Material>()
         val fromConfig: List<String> = Bukkit.getPluginManager().getPlugin("MobBGone")!!
                 .config.getStringList("spawnproof-blocks")
         val legacyMode: Boolean = Bukkit.getPluginManager().getPlugin("MobBGone")!!
