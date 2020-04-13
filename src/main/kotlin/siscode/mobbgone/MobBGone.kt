@@ -1,8 +1,8 @@
-package sisbase.mobbgone
+package siscode.mobbgone
 
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
-import sisbase.mobbgone.handlers.SpawnHandler
+import siscode.mobbgone.handlers.SpawnHandler
 
 class MobBGone : JavaPlugin() {
     override fun onEnable() {

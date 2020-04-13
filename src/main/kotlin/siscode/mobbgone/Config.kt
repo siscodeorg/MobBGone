@@ -1,4 +1,4 @@
-package sisbase.mobbgone
+package siscode.mobbgone
 
 import org.bukkit.Material
 

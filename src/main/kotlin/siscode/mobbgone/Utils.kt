@@ -1,4 +1,4 @@
-package sisbase.mobbgone
+package siscode.mobbgone
 
 inline fun <reified T: Enum<T>> getEnumNames(): Set<String> {
     return enumValues<T>().map { it.name }.toSet()
