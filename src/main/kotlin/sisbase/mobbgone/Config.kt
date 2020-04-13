@@ -19,8 +19,11 @@ class Config {
         val blockRegistry = getEnumNames<Material>().filter { legacyMode || !it.contains("LEGACY") }
         for (entry in wildcards) {
             val strings = matchWildcard(entry, blockRegistry)
+            strings.ifEmpty {
+                MobBGone.logger.warning("$entry matches no known blocks")
+            }
             for (response in strings) {
-                println("REGISTERED : $response")
+                MobBGone.logger.info("Registered spawnproof block: $response")
                 _blocks.add(Material.getMaterial(response))
             }
         }

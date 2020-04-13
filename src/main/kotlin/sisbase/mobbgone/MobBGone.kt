@@ -17,5 +17,6 @@ class MobBGone : JavaPlugin() {
     companion object {
         val cfg = Config()
         val bukkitConfig get() = Bukkit.getPluginManager().getPlugin("MobBGone")!!.config
+        val logger get() = Bukkit.getPluginManager().getPlugin("MobBGone")!!.logger
     }
 }
