@@ -1,11 +1,11 @@
-package sisbase.mobbgone.handlers
+package siscode.mobbgone.handlers
 
 import com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent
 import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
-import sisbase.mobbgone.MobBGone
+import siscode.mobbgone.MobBGone
 
 class SpawnHandler : Listener {
     @EventHandler
