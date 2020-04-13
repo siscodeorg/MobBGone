@@ -30,9 +30,7 @@ class Config {
     }
 
     private fun checkName(entry: String, registry: Set<String>): Set<String> {
-        val newEntry = entry.replace("*", "").replace("\\*", "")
-        return if (entry.contains("*")) registry.stream().filter { d: String -> d.contains(newEntry.toUpperCase()) }.collect(Collectors.toSet()) else {
-            registry.stream().filter { d: String -> d == entry.toUpperCase() }.collect(Collectors.toSet())
-        }
+        val pattern = Regex.escape(entry.toUpperCase()).replace("*", "\\E.*\\Q").toRegex()
+        return registry.filter { pattern.matches(it) }
     }
 }

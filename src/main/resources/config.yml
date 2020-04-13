@@ -13,15 +13,15 @@
 # that has that string on its name.
 
 spawnproof-blocks:
-- polished_*
-- smooth_stone
-- iron_block
-- redstone_*
-- diamond_block
-- coal_block
-- emerald_block
-- _concrete_powder*
-- _concrete*
+- "polished_*"
+- "smooth_stone"
+- "iron_block"
+- "redstone_*"
+- "diamond_block"
+- "coal_block"
+- "emerald_block"
+- "*_concrete_powder"
+- "*_concrete"
 
 #               ###########################
 #               ## Register Legacy Types ##
