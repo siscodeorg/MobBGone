@@ -1,6 +1,7 @@
 package siscode.mobbgone.inventories
 
 import org.bukkit.Bukkit
+import org.bukkit.Material
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.InventoryHolder
 import org.bukkit.inventory.ItemStack
@@ -17,7 +18,7 @@ class BlocksInventory : InventoryHolder
         for(item in MobBGone.cfg.blocksPerEntry)
         {
             if(item.value.isEmpty()) continue
-            val itemStack = ItemStack(item.value.first()!!,item.value.size)
+            val itemStack = ItemStack(item.value.firstOrNull {it!!.isItem} ?:Material.BARRIER,item.value.size)
             itemStack.lore = item.value.map { "\t- ${it?.name}" }
             val meta = itemStack.itemMeta
             meta.setDisplayName(item.key)
