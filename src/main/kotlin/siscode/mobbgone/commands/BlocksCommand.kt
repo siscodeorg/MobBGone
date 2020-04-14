@@ -16,8 +16,7 @@ class BlocksCommand : CommandExecutor {
         if(args.isNotEmpty()) return false
         if(sender is Player)
         {
-            val p : Player = sender as Player
-            p.openInventory(BlocksInventory().inventory)
+            sender.openInventory(BlocksInventory().inventory)
             return true
         }
         if(sender is ConsoleCommandSender)
