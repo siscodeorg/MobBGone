@@ -4,3 +4,7 @@ main: siscode.mobbgone.MobBGone
 api-version: 1.13
 authors: [sisbase]
 description: Disables mobspawning on synthetic blocks
+commands:
+  blocks:
+    description: Lists all registered blocks
+    usage: /<command>
