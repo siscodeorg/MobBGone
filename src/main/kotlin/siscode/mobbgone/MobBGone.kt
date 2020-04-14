@@ -2,6 +2,8 @@ package siscode.mobbgone
 
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
+import siscode.mobbgone.commands.BlocksCommand
+import siscode.mobbgone.handlers.InventoryHandler
 import siscode.mobbgone.handlers.SpawnHandler
 
 class MobBGone : JavaPlugin() {
@@ -10,6 +12,8 @@ class MobBGone : JavaPlugin() {
         reloadConfig()
         cfg.initialize()
         server.pluginManager.registerEvents(SpawnHandler(), this)
+        server.pluginManager.registerEvents(InventoryHandler(),this)
+        getCommand("blocks")?.setExecutor(BlocksCommand());
     }
 
     override fun onDisable() {}
